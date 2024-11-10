@@ -111,7 +111,7 @@ func handleMessages(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(messages)
 }
 func main() {
-	ctx := context.Background()
+	//ctx := context.Background()
 	//writerKafka(ctx)
 
 	go func() {
@@ -123,7 +123,5 @@ func main() {
 	}()
 
 	go listenSignal()
-
-	readKafka(ctx)
 
 }
