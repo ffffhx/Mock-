@@ -111,11 +111,11 @@ func handleMessages(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(messages)
 }
 func main() {
-	ctx := context.Background()
+	//ctx := context.Background()
 	//writerKafka(ctx)
 
 	go func() {
-		http.HandleFunc("/api/v1/messages", handleMessages)
+		http.HandleFunc("messages", handleMessages)
 		log.Println("Starting server at port 8080")
 		if err := http.ListenAndServe(":8080", nil); err != nil {
 			log.Fatal(err)
@@ -123,7 +123,5 @@ func main() {
 	}()
 
 	go listenSignal()
-
-	readKafka(ctx)
 
 }
